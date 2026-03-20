@@ -1,0 +1,17 @@
+services:
+  bitnet-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        HF_REPO: microsoft/BitNet-b1.58-2B-4T
+        QUANT_TYPE: i2_s
+    ports:
+      - "8080:8080"
+    environment:
+      - MODEL_PATH=models/BitNet-b1.58-2B-4T/ggml-model-i2_s.gguf
+      - THREADS=4
+      - CTX_SIZE=2048
+      - HOST=0.0.0.0
+      - PORT=8080
+    restart: unless-stopped

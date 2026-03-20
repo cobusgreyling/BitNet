@@ -246,6 +246,118 @@ optional arguments:
                         (When this option is turned on, the prompt specified by -p will be used as the system prompt.)
 </pre>
 
+### OpenAI-Compatible API Server
+
+BitNet includes a built-in server that exposes an **OpenAI-compatible API**, allowing you to use BitNet as a drop-in replacement in any application that supports the OpenAI API.
+
+#### Start the server
+```bash
+python run_inference_server.py -m models/BitNet-b1.58-2B-4T/ggml-model-i2_s.gguf -t 4
+```
+
+The server starts on `http://localhost:8080` by default. It supports the following OpenAI-compatible endpoints:
+
+| Endpoint | Description |
+|---|---|
+| `POST /v1/chat/completions` | Chat completions (supports streaming) |
+| `POST /v1/completions` | Text completions |
+| `GET /v1/models` | List available models |
+| `GET /health` | Server health check |
+
+#### Use with the OpenAI Python client
+```python
+from openai import OpenAI
+
+client = OpenAI(base_url="http://localhost:8080/v1", api_key="not-needed")
+
+response = client.chat.completions.create(
+    model="bitnet",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "What is 1-bit quantization?"},
+    ],
+)
+print(response.choices[0].message.content)
+```
+
+#### Use with curl
+```bash
+curl http://localhost:8080/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "bitnet",
+    "messages": [{"role": "user", "content": "Hello!"}],
+    "max_tokens": 128
+  }'
+```
+
+See [`examples/openai_client.py`](examples/openai_client.py) and [`examples/openai_curl.sh`](examples/openai_curl.sh) for more examples including streaming.
+
+<pre>
+usage: run_inference_server.py [-h] [-m MODEL] [-p PROMPT] [-n N_PREDICT] [-t THREADS] [-c CTX_SIZE] [--temperature TEMPERATURE] [--host HOST] [--port PORT]
+
+Run llama.cpp server
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -m MODEL, --model MODEL
+                        Path to model file
+  -p PROMPT, --prompt PROMPT
+                        System prompt for the model
+  -n N_PREDICT, --n-predict N_PREDICT
+                        Number of tokens to predict
+  -t THREADS, --threads THREADS
+                        Number of threads to use
+  -c CTX_SIZE, --ctx-size CTX_SIZE
+                        Size of the context window
+  --temperature TEMPERATURE
+                        Temperature for sampling
+  --host HOST           IP address to listen on (default: 127.0.0.1)
+  --port PORT           Port to listen on (default: 8080)
+</pre>
+
+### Docker
+
+Run BitNet in a container with no build dependencies required on the host.
+
+#### Quick start with Docker Compose
+```bash
+docker compose up
+```
+
+This builds the image (downloading and quantizing the default `BitNet-b1.58-2B-4T` model) and starts the OpenAI-compatible server on port 8080.
+
+#### Build and run manually
+```bash
+# Build (downloads and quantizes the model during build)
+docker build -t bitnet .
+
+# Run the server
+docker run -p 8080:8080 bitnet
+
+# Override settings via environment variables
+docker run -p 8080:8080 \
+  -e THREADS=8 \
+  -e CTX_SIZE=4096 \
+  bitnet
+```
+
+#### Build with a different model
+```bash
+docker build -t bitnet \
+  --build-arg HF_REPO=1bitLLM/bitnet_b1_58-3B \
+  --build-arg QUANT_TYPE=i2_s \
+  .
+```
+
+#### Use a pre-downloaded model (mount volume)
+```bash
+docker run -p 8080:8080 \
+  -v /path/to/models:/app/models \
+  -e MODEL_PATH=models/your-model/ggml-model-i2_s.gguf \
+  bitnet
+```
+
 ### Benchmark
 We provide scripts to run the inference benchmark providing a model.
 
