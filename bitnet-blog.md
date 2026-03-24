@@ -1,5 +1,7 @@
 # What If Every Weight in Your LLM Was Just -1, 0, or 1?
 
+![BitNet — From NLU to LLM to BitNet](images/header.svg)
+
 That is the premise behind BitNet. And it works better than you would expect.
 
 ## We Have Been Here Before
@@ -63,6 +65,8 @@ BitNet.cpp is Microsoft's open-source inference engine for 1.58-bit models. It i
 **An OpenAI-compatible API server.** BitNet.cpp includes a server that exposes the same endpoints as the OpenAI API — `/v1/chat/completions`, `/v1/completions`, `/v1/models`. Any code that talks to OpenAI can point at a local BitNet server instead. No client changes needed.
 
 ## Getting Started
+
+![BitNet Explorer](images/demo1.png)
 
 The setup is straightforward.
 
