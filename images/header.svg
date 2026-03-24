@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#0f172a"/>
@@ -9,153 +9,227 @@
       <stop offset="0%" style="stop-color:#10b981"/>
       <stop offset="100%" style="stop-color:#34d399"/>
     </linearGradient>
+    <linearGradient id="red" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#f87171"/>
+    </linearGradient>
+    <linearGradient id="glow-green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#10b981;stop-opacity:0"/>
+    </linearGradient>
     <filter id="glow">
       <feGaussianBlur stdDeviation="3" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <filter id="softglow">
-      <feGaussianBlur stdDeviation="6" result="blur"/>
+    <filter id="bigglow">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
 
   <!-- Background -->
-  <rect width="1200" height="400" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#bg)"/>
 
-  <!-- Grid -->
+  <!-- Subtle grid -->
   <g opacity="0.04" stroke="#94a3b8" stroke-width="0.5">
-    <line x1="0" y1="50" x2="1200" y2="50"/><line x1="0" y1="100" x2="1200" y2="100"/>
-    <line x1="0" y1="150" x2="1200" y2="150"/><line x1="0" y1="200" x2="1200" y2="200"/>
-    <line x1="0" y1="250" x2="1200" y2="250"/><line x1="0" y1="300" x2="1200" y2="300"/>
-    <line x1="0" y1="350" x2="1200" y2="350"/>
-    <line x1="100" y1="0" x2="100" y2="400"/><line x1="200" y1="0" x2="200" y2="400"/>
-    <line x1="300" y1="0" x2="300" y2="400"/><line x1="400" y1="0" x2="400" y2="400"/>
-    <line x1="500" y1="0" x2="500" y2="400"/><line x1="600" y1="0" x2="600" y2="400"/>
-    <line x1="700" y1="0" x2="700" y2="400"/><line x1="800" y1="0" x2="800" y2="400"/>
-    <line x1="900" y1="0" x2="900" y2="400"/><line x1="1000" y1="0" x2="1000" y2="400"/>
-    <line x1="1100" y1="0" x2="1100" y2="400"/>
-  </g>
-
-  <!-- Ternary weight visualization - scattered dots representing -1, 0, 1 -->
-  <g opacity="0.15">
-    <!-- -1 weights (red-ish) -->
-    <circle cx="80" cy="180" r="3" fill="#f87171"/><circle cx="120" cy="220" r="2.5" fill="#f87171"/>
-    <circle cx="95" cy="260" r="3" fill="#f87171"/><circle cx="140" cy="190" r="2" fill="#f87171"/>
-    <circle cx="70" cy="240" r="2.5" fill="#f87171"/><circle cx="110" cy="280" r="3" fill="#f87171"/>
-    <circle cx="155" cy="250" r="2" fill="#f87171"/><circle cx="85" cy="300" r="2.5" fill="#f87171"/>
-    <!-- 0 weights (dim) -->
-    <circle cx="100" cy="200" r="2" fill="#475569"/><circle cx="130" cy="240" r="2" fill="#475569"/>
-    <circle cx="75" cy="270" r="2" fill="#475569"/><circle cx="145" cy="210" r="2" fill="#475569"/>
-    <circle cx="115" cy="300" r="2" fill="#475569"/><circle cx="90" cy="230" r="2" fill="#475569"/>
-    <circle cx="160" cy="270" r="2" fill="#475569"/><circle cx="105" cy="250" r="2" fill="#475569"/>
-    <!-- +1 weights (green) -->
-    <circle cx="110" cy="190" r="3" fill="#10b981"/><circle cx="135" cy="260" r="2.5" fill="#10b981"/>
-    <circle cx="85" cy="210" r="3" fill="#10b981"/><circle cx="150" cy="230" r="2" fill="#10b981"/>
-    <circle cx="125" cy="290" r="2.5" fill="#10b981"/><circle cx="100" cy="310" r="3" fill="#10b981"/>
-    <circle cx="145" cy="280" r="2" fill="#10b981"/><circle cx="70" cy="290" r="2.5" fill="#10b981"/>
-  </g>
-
-  <!-- Right side weight dots -->
-  <g opacity="0.15">
-    <circle cx="1050" cy="180" r="3" fill="#f87171"/><circle cx="1090" cy="220" r="2.5" fill="#10b981"/>
-    <circle cx="1070" cy="260" r="3" fill="#475569"/><circle cx="1110" cy="190" r="2" fill="#10b981"/>
-    <circle cx="1040" cy="240" r="2.5" fill="#f87171"/><circle cx="1080" cy="280" r="3" fill="#475569"/>
-    <circle cx="1120" cy="250" r="2" fill="#10b981"/><circle cx="1060" cy="300" r="2.5" fill="#f87171"/>
-    <circle cx="1100" cy="200" r="2" fill="#475569"/><circle cx="1130" cy="240" r="2" fill="#10b981"/>
-    <circle cx="1045" cy="270" r="2" fill="#f87171"/><circle cx="1115" cy="210" r="2" fill="#10b981"/>
+    <line x1="0" y1="100" x2="1200" y2="100"/><line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/><line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="500" x2="1200" y2="500"/>
+    <line x1="200" y1="0" x2="200" y2="630"/><line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/><line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
   </g>
 
   <!-- Title -->
-  <text x="600" y="75" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="800" fill="#f8fafc" text-anchor="middle" filter="url(#glow)">BitNet Explorer</text>
+  <text x="600" y="55" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="800" fill="#f8fafc" text-anchor="middle" filter="url(#glow)">What If Every Weight Was Just -1, 0, or 1?</text>
+  <text x="600" y="85" font-family="system-ui, -apple-system, sans-serif" font-size="17" fill="#94a3b8" text-anchor="middle">The journey from efficient NLU models to massive LLMs — and back again</text>
 
-  <!-- Subtitle -->
-  <text x="600" y="110" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#94a3b8" text-anchor="middle">What if every weight in your LLM was just -1, 0, or 1?</text>
+  <!-- Timeline arrow -->
+  <line x1="100" y1="120" x2="1100" y2="120" stroke="#334155" stroke-width="1.5"/>
+  <polygon points="1100,120 1092,115 1092,125" fill="#334155"/>
 
-  <!-- Accent line -->
-  <rect x="430" y="125" width="340" height="2" rx="1" fill="url(#green)" opacity="0.6"/>
+  <!-- ===== ERA 1: NLU (small, efficient) ===== -->
+  <g transform="translate(80, 145)">
+    <!-- Small chip/device -->
+    <rect width="260" height="220" rx="12" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5" opacity="0.9"/>
 
-  <!-- The three ternary values - large display -->
-  <g transform="translate(350, 155)">
-    <rect width="100" height="70" rx="10" fill="#1e293b" stroke="#f87171" stroke-width="2" opacity="0.8"/>
-    <text x="50" y="38" font-family="monospace" font-size="32" font-weight="700" fill="#f87171" text-anchor="middle">-1</text>
-    <text x="50" y="58" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">negate</text>
+    <!-- Tiny chip icon -->
+    <rect x="90" y="20" width="80" height="80" rx="6" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5"/>
+    <!-- Chip pins -->
+    <line x1="100" y1="20" x2="100" y2="10" stroke="#3b82f6" stroke-width="1.5" opacity="0.5"/>
+    <line x1="115" y1="20" x2="115" y2="10" stroke="#3b82f6" stroke-width="1.5" opacity="0.5"/>
+    <line x1="130" y1="20" x2="130" y2="10" stroke="#3b82f6" stroke-width="1.5" opacity="0.5"/>
+    <line x1="145" y1="20" x2="145" y2="10" stroke="#3b82f6" stroke-width="1.5" opacity="0.5"/>
+    <line x1="160" y1="20" x2="160" y2="10" stroke="#3b82f6" stroke-width="1.5" opacity="0.5"/>
+    <line x1="100" y1="100" x2="100" y2="110" stroke="#3b82f6" stroke-width="1.5" opacity="0.5"/>
+    <line x1="115" y1="100" x2="115" y2="110" stroke="#3b82f6" stroke-width="1.5" opacity="0.5"/>
+    <line x1="130" y1="100" x2="130" y2="110" stroke="#3b82f6" stroke-width="1.5" opacity="0.5"/>
+    <line x1="145" y1="100" x2="145" y2="110" stroke="#3b82f6" stroke-width="1.5" opacity="0.5"/>
+    <line x1="160" y1="100" x2="160" y2="110" stroke="#3b82f6" stroke-width="1.5" opacity="0.5"/>
+    <!-- Chip label -->
+    <text x="130" y="65" font-family="monospace" font-size="11" fill="#3b82f6" text-anchor="middle">CPU</text>
+
+    <!-- Size indicator -->
+    <text x="130" y="132" font-family="monospace" font-size="22" font-weight="700" fill="#3b82f6" text-anchor="middle">~50 MB</text>
+
+    <!-- Labels -->
+    <text x="130" y="160" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Rasa, LUIS, Dialogflow</text>
+    <text x="130" y="178" font-family="system-ui, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Single CPU core</text>
+    <text x="130" y="194" font-family="system-ui, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Phones, kiosks, IoT</text>
+
+    <!-- Era label -->
+    <text x="130" y="215" font-family="system-ui, sans-serif" font-size="10" fill="#475569" text-anchor="middle">sub-millisecond latency</text>
   </g>
 
-  <g transform="translate(480, 155)">
-    <rect width="100" height="70" rx="10" fill="#1e293b" stroke="#475569" stroke-width="2" opacity="0.8"/>
-    <text x="50" y="38" font-family="monospace" font-size="32" font-weight="700" fill="#64748b" text-anchor="middle">0</text>
-    <text x="50" y="58" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">skip</text>
+  <!-- Era 1 label below -->
+  <text x="210" y="390" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#3b82f6" text-anchor="middle">NLU Era</text>
+  <text x="210" y="410" font-family="system-ui, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Small, efficient, edge-native</text>
+  <text x="210" y="428" font-family="monospace" font-size="11" fill="#475569" text-anchor="middle">2015 — 2020</text>
+
+  <!-- Arrow 1→2 -->
+  <g transform="translate(355, 240)">
+    <line x1="0" y1="0" x2="50" y2="0" stroke="#ef4444" stroke-width="2" opacity="0.4"/>
+    <polygon points="55,0 48,-5 48,5" fill="#ef4444" opacity="0.4"/>
+    <text x="27" y="18" font-family="system-ui, sans-serif" font-size="9" fill="#ef4444" text-anchor="middle" opacity="0.6">bigger</text>
   </g>
 
-  <g transform="translate(610, 155)">
-    <rect width="100" height="70" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="2" opacity="0.8"/>
-    <text x="50" y="38" font-family="monospace" font-size="32" font-weight="700" fill="#10b981" text-anchor="middle">+1</text>
-    <text x="50" y="58" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">copy</text>
+  <!-- ===== ERA 2: LLM (massive, cloud) ===== -->
+  <g transform="translate(430, 145)">
+    <rect width="300" height="220" rx="12" fill="#1e293b" stroke="#ef4444" stroke-width="1.5" opacity="0.9"/>
+
+    <!-- GPU cluster visualization -->
+    <!-- GPU 1 -->
+    <rect x="25" y="15" width="55" height="40" rx="4" fill="#0f172a" stroke="#ef4444" stroke-width="1" opacity="0.7"/>
+    <text x="52" y="40" font-family="monospace" font-size="8" fill="#ef4444" text-anchor="middle">GPU</text>
+    <!-- GPU 2 -->
+    <rect x="90" y="15" width="55" height="40" rx="4" fill="#0f172a" stroke="#ef4444" stroke-width="1" opacity="0.7"/>
+    <text x="117" y="40" font-family="monospace" font-size="8" fill="#ef4444" text-anchor="middle">GPU</text>
+    <!-- GPU 3 -->
+    <rect x="155" y="15" width="55" height="40" rx="4" fill="#0f172a" stroke="#ef4444" stroke-width="1" opacity="0.7"/>
+    <text x="182" y="40" font-family="monospace" font-size="8" fill="#ef4444" text-anchor="middle">GPU</text>
+    <!-- GPU 4 -->
+    <rect x="220" y="15" width="55" height="40" rx="4" fill="#0f172a" stroke="#ef4444" stroke-width="1" opacity="0.7"/>
+    <text x="247" y="40" font-family="monospace" font-size="8" fill="#ef4444" text-anchor="middle">GPU</text>
+
+    <!-- GPU row 2 -->
+    <rect x="25" y="62" width="55" height="40" rx="4" fill="#0f172a" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
+    <text x="52" y="87" font-family="monospace" font-size="8" fill="#ef4444" text-anchor="middle" opacity="0.7">GPU</text>
+    <rect x="90" y="62" width="55" height="40" rx="4" fill="#0f172a" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
+    <text x="117" y="87" font-family="monospace" font-size="8" fill="#ef4444" text-anchor="middle" opacity="0.7">GPU</text>
+    <rect x="155" y="62" width="55" height="40" rx="4" fill="#0f172a" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
+    <text x="182" y="87" font-family="monospace" font-size="8" fill="#ef4444" text-anchor="middle" opacity="0.7">GPU</text>
+    <rect x="220" y="62" width="55" height="40" rx="4" fill="#0f172a" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
+    <text x="247" y="87" font-family="monospace" font-size="8" fill="#ef4444" text-anchor="middle" opacity="0.7">GPU</text>
+
+    <!-- Size -->
+    <text x="150" y="130" font-family="monospace" font-size="22" font-weight="700" fill="#ef4444" text-anchor="middle">~200 GB</text>
+
+    <!-- Labels -->
+    <text x="150" y="155" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">100B parameters × 16-bit</text>
+    <text x="150" y="173" font-family="system-ui, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Multi-GPU clusters</text>
+    <text x="150" y="189" font-family="system-ui, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Cloud only, $3-5/hr</text>
+    <text x="150" y="215" font-family="system-ui, sans-serif" font-size="10" fill="#475569" text-anchor="middle">65,536 distinct values per weight</text>
   </g>
 
-  <!-- Arrow from values to info -->
-  <text x="770" y="190" font-family="monospace" font-size="14" fill="#64748b">=</text>
+  <!-- Era 2 label below -->
+  <text x="580" y="390" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#ef4444" text-anchor="middle">LLM Era</text>
+  <text x="580" y="410" font-family="system-ui, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Massive, expensive, cloud-bound</text>
+  <text x="580" y="428" font-family="monospace" font-size="11" fill="#475569" text-anchor="middle">2022 — 2024</text>
 
-  <!-- 1.58 bits badge -->
-  <g transform="translate(800, 160)">
-    <rect width="130" height="55" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
-    <text x="65" y="25" font-family="monospace" font-size="22" font-weight="700" fill="#10b981" text-anchor="middle">1.58</text>
-    <text x="65" y="43" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">bits per weight</text>
-  </g>
-
-  <!-- Bottom stats bar -->
-  <g transform="translate(140, 260)">
-    <rect width="170" height="55" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-    <text x="85" y="22" font-family="monospace" font-size="18" font-weight="700" fill="#10b981" text-anchor="middle">2-6x</text>
-    <text x="85" y="42" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">faster inference</text>
+  <!-- Arrow 2→3 -->
+  <g transform="translate(745, 240)">
+    <line x1="0" y1="0" x2="50" y2="0" stroke="#10b981" stroke-width="2" opacity="0.4"/>
+    <polygon points="55,0 48,-5 48,5" fill="#10b981" opacity="0.4"/>
+    <text x="27" y="18" font-family="system-ui, sans-serif" font-size="9" fill="#10b981" text-anchor="middle" opacity="0.6">smarter</text>
   </g>
 
-  <g transform="translate(340, 260)">
-    <rect width="170" height="55" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-    <text x="85" y="22" font-family="monospace" font-size="18" font-weight="700" fill="#10b981" text-anchor="middle">10x</text>
-    <text x="85" y="42" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">smaller models</text>
+  <!-- ===== ERA 3: BitNet (small again, but powerful) ===== -->
+  <g transform="translate(820, 145)">
+    <rect width="280" height="220" rx="12" fill="#1e293b" stroke="#10b981" stroke-width="2" opacity="0.9"/>
+
+    <!-- Glow effect behind chip -->
+    <circle cx="140" cy="55" r="45" fill="url(#glow-green)" filter="url(#bigglow)"/>
+
+    <!-- Chip icon (same as era 1 but glowing green) -->
+    <rect x="100" y="15" width="80" height="80" rx="6" fill="#0f172a" stroke="#10b981" stroke-width="2"/>
+    <!-- Chip pins -->
+    <line x1="110" y1="15" x2="110" y2="5" stroke="#10b981" stroke-width="1.5" opacity="0.5"/>
+    <line x1="125" y1="15" x2="125" y2="5" stroke="#10b981" stroke-width="1.5" opacity="0.5"/>
+    <line x1="140" y1="15" x2="140" y2="5" stroke="#10b981" stroke-width="1.5" opacity="0.5"/>
+    <line x1="155" y1="15" x2="155" y2="5" stroke="#10b981" stroke-width="1.5" opacity="0.5"/>
+    <line x1="170" y1="15" x2="170" y2="5" stroke="#10b981" stroke-width="1.5" opacity="0.5"/>
+    <line x1="110" y1="95" x2="110" y2="105" stroke="#10b981" stroke-width="1.5" opacity="0.5"/>
+    <line x1="125" y1="95" x2="125" y2="105" stroke="#10b981" stroke-width="1.5" opacity="0.5"/>
+    <line x1="140" y1="95" x2="140" y2="105" stroke="#10b981" stroke-width="1.5" opacity="0.5"/>
+    <line x1="155" y1="95" x2="155" y2="105" stroke="#10b981" stroke-width="1.5" opacity="0.5"/>
+    <line x1="170" y1="95" x2="170" y2="105" stroke="#10b981" stroke-width="1.5" opacity="0.5"/>
+    <!-- Chip label -->
+    <text x="140" y="55" font-family="monospace" font-size="11" fill="#10b981" text-anchor="middle">CPU</text>
+    <text x="140" y="70" font-family="monospace" font-size="9" fill="#10b981" text-anchor="middle" opacity="0.6">100B</text>
+
+    <!-- Size -->
+    <text x="140" y="132" font-family="monospace" font-size="22" font-weight="700" fill="#10b981" text-anchor="middle">~20 GB</text>
+
+    <!-- Labels -->
+    <text x="140" y="155" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">100B parameters × 1.58-bit</text>
+    <text x="140" y="173" font-family="system-ui, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Single CPU, no GPU</text>
+    <text x="140" y="189" font-family="system-ui, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Laptops, edge, local</text>
+    <text x="140" y="215" font-family="system-ui, sans-serif" font-size="10" fill="#475569" text-anchor="middle">3 values per weight: -1, 0, +1</text>
   </g>
 
-  <g transform="translate(540, 260)">
-    <rect width="170" height="55" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-    <text x="85" y="22" font-family="monospace" font-size="18" font-weight="700" fill="#10b981" text-anchor="middle">82%</text>
-    <text x="85" y="42" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">less energy</text>
+  <!-- Era 3 label below -->
+  <text x="960" y="390" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#10b981" text-anchor="middle">BitNet Era</text>
+  <text x="960" y="410" font-family="system-ui, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">LLM capability, edge deployment</text>
+  <text x="960" y="428" font-family="monospace" font-size="11" fill="#475569" text-anchor="middle">2025+</text>
+
+  <!-- ===== Bottom: Weight zoom ===== -->
+  <rect x="100" y="455" width="1000" height="100" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+
+  <text x="600" y="478" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">A SINGLE WEIGHT</text>
+
+  <!-- FP32 -->
+  <g transform="translate(140, 490)">
+    <rect width="200" height="36" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <text x="100" y="16" font-family="monospace" font-size="10" fill="#64748b" text-anchor="middle">FP32 (32 bits)</text>
+    <text x="100" y="30" font-family="monospace" font-size="12" fill="#94a3b8" text-anchor="middle">0.00347519226...</text>
   </g>
 
-  <g transform="translate(740, 260)">
-    <rect width="170" height="55" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-    <text x="85" y="22" font-family="monospace" font-size="18" font-weight="700" fill="#10b981" text-anchor="middle">No GPU</text>
-    <text x="85" y="42" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">CPU inference</text>
+  <!-- Arrow -->
+  <text x="365" y="513" font-family="system-ui, sans-serif" font-size="16" fill="#475569">→</text>
+
+  <!-- FP16 -->
+  <g transform="translate(390, 490)">
+    <rect width="170" height="36" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <text x="85" y="16" font-family="monospace" font-size="10" fill="#64748b" text-anchor="middle">FP16 (16 bits)</text>
+    <text x="85" y="30" font-family="monospace" font-size="12" fill="#94a3b8" text-anchor="middle">0.003475</text>
   </g>
 
-  <g transform="translate(940, 260)">
-    <rect width="170" height="55" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-    <text x="85" y="22" font-family="monospace" font-size="18" font-weight="700" fill="#10b981" text-anchor="middle">OpenAI</text>
-    <text x="85" y="42" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">compatible API</text>
+  <!-- Arrow -->
+  <text x="585" y="513" font-family="system-ui, sans-serif" font-size="16" fill="#475569">→</text>
+
+  <!-- INT4 -->
+  <g transform="translate(610, 490)">
+    <rect width="140" height="36" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <text x="70" y="16" font-family="monospace" font-size="10" fill="#64748b" text-anchor="middle">INT4 (4 bits)</text>
+    <text x="70" y="30" font-family="monospace" font-size="12" fill="#94a3b8" text-anchor="middle">0</text>
   </g>
 
-  <!-- Feature pills at bottom -->
-  <g transform="translate(200, 340)">
-    <rect width="120" height="26" rx="13" fill="none" stroke="#10b981" stroke-width="1" opacity="0.4"/>
-    <text x="60" y="17" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Weight Viz</text>
-  </g>
-  <g transform="translate(340, 340)">
-    <rect width="120" height="26" rx="13" fill="none" stroke="#10b981" stroke-width="1" opacity="0.4"/>
-    <text x="60" y="17" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Benchmarks</text>
-  </g>
-  <g transform="translate(480, 340)">
-    <rect width="120" height="26" rx="13" fill="none" stroke="#10b981" stroke-width="1" opacity="0.4"/>
-    <text x="60" y="17" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Quant Explorer</text>
-  </g>
-  <g transform="translate(620, 340)">
-    <rect width="120" height="26" rx="13" fill="none" stroke="#10b981" stroke-width="1" opacity="0.4"/>
-    <text x="60" y="17" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">API Client</text>
-  </g>
-  <g transform="translate(760, 340)">
-    <rect width="120" height="26" rx="13" fill="none" stroke="#10b981" stroke-width="1" opacity="0.4"/>
-    <text x="60" y="17" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Setup Script</text>
+  <!-- Arrow -->
+  <text x="775" y="513" font-family="system-ui, sans-serif" font-size="16" fill="#475569">→</text>
+
+  <!-- BitNet Ternary -->
+  <g transform="translate(800, 490)">
+    <rect width="250" height="36" rx="6" fill="#10b981" fill-opacity="0.1" stroke="#10b981" stroke-width="2"/>
+    <text x="125" y="16" font-family="monospace" font-size="10" fill="#10b981" text-anchor="middle">Ternary (1.58 bits)</text>
+    <text x="60" y="32" font-family="monospace" font-size="16" font-weight="700" fill="#f87171" text-anchor="middle">-1</text>
+    <text x="125" y="32" font-family="monospace" font-size="16" font-weight="700" fill="#64748b" text-anchor="middle">0</text>
+    <text x="190" y="32" font-family="monospace" font-size="16" font-weight="700" fill="#10b981" text-anchor="middle">+1</text>
   </g>
 
-  <!-- Bottom credit -->
-  <text x="600" y="390" font-family="system-ui, sans-serif" font-size="11" fill="#475569" text-anchor="middle">Microsoft BitNet 1.58-bit Inference</text>
+  <!-- Compression label -->
+  <text x="600" y="548" font-family="system-ui, sans-serif" font-size="11" fill="#475569" text-anchor="middle">32 bits → 16 bits → 4 bits → 1.58 bits  |  4 billion values → 65,536 → 16 → 3</text>
+
+  <!-- Bottom -->
+  <text x="600" y="590" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#f8fafc" text-anchor="middle" filter="url(#glow)">Three values. That is all they need.</text>
+  <text x="600" y="618" font-family="system-ui, sans-serif" font-size="11" fill="#334155" text-anchor="middle">Cobus Greyling</text>
 </svg>
