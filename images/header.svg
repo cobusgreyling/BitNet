@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="50%" style="stop-color:#1e293b"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#34d399"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softglow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="400" fill="url(#bg)"/>
+
+  <!-- Grid -->
+  <g opacity="0.04" stroke="#94a3b8" stroke-width="0.5">
+    <line x1="0" y1="50" x2="1200" y2="50"/><line x1="0" y1="100" x2="1200" y2="100"/>
+    <line x1="0" y1="150" x2="1200" y2="150"/><line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="250" x2="1200" y2="250"/><line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="350" x2="1200" y2="350"/>
+    <line x1="100" y1="0" x2="100" y2="400"/><line x1="200" y1="0" x2="200" y2="400"/>
+    <line x1="300" y1="0" x2="300" y2="400"/><line x1="400" y1="0" x2="400" y2="400"/>
+    <line x1="500" y1="0" x2="500" y2="400"/><line x1="600" y1="0" x2="600" y2="400"/>
+    <line x1="700" y1="0" x2="700" y2="400"/><line x1="800" y1="0" x2="800" y2="400"/>
+    <line x1="900" y1="0" x2="900" y2="400"/><line x1="1000" y1="0" x2="1000" y2="400"/>
+    <line x1="1100" y1="0" x2="1100" y2="400"/>
+  </g>
+
+  <!-- Ternary weight visualization - scattered dots representing -1, 0, 1 -->
+  <g opacity="0.15">
+    <!-- -1 weights (red-ish) -->
+    <circle cx="80" cy="180" r="3" fill="#f87171"/><circle cx="120" cy="220" r="2.5" fill="#f87171"/>
+    <circle cx="95" cy="260" r="3" fill="#f87171"/><circle cx="140" cy="190" r="2" fill="#f87171"/>
+    <circle cx="70" cy="240" r="2.5" fill="#f87171"/><circle cx="110" cy="280" r="3" fill="#f87171"/>
+    <circle cx="155" cy="250" r="2" fill="#f87171"/><circle cx="85" cy="300" r="2.5" fill="#f87171"/>
+    <!-- 0 weights (dim) -->
+    <circle cx="100" cy="200" r="2" fill="#475569"/><circle cx="130" cy="240" r="2" fill="#475569"/>
+    <circle cx="75" cy="270" r="2" fill="#475569"/><circle cx="145" cy="210" r="2" fill="#475569"/>
+    <circle cx="115" cy="300" r="2" fill="#475569"/><circle cx="90" cy="230" r="2" fill="#475569"/>
+    <circle cx="160" cy="270" r="2" fill="#475569"/><circle cx="105" cy="250" r="2" fill="#475569"/>
+    <!-- +1 weights (green) -->
+    <circle cx="110" cy="190" r="3" fill="#10b981"/><circle cx="135" cy="260" r="2.5" fill="#10b981"/>
+    <circle cx="85" cy="210" r="3" fill="#10b981"/><circle cx="150" cy="230" r="2" fill="#10b981"/>
+    <circle cx="125" cy="290" r="2.5" fill="#10b981"/><circle cx="100" cy="310" r="3" fill="#10b981"/>
+    <circle cx="145" cy="280" r="2" fill="#10b981"/><circle cx="70" cy="290" r="2.5" fill="#10b981"/>
+  </g>
+
+  <!-- Right side weight dots -->
+  <g opacity="0.15">
+    <circle cx="1050" cy="180" r="3" fill="#f87171"/><circle cx="1090" cy="220" r="2.5" fill="#10b981"/>
+    <circle cx="1070" cy="260" r="3" fill="#475569"/><circle cx="1110" cy="190" r="2" fill="#10b981"/>
+    <circle cx="1040" cy="240" r="2.5" fill="#f87171"/><circle cx="1080" cy="280" r="3" fill="#475569"/>
+    <circle cx="1120" cy="250" r="2" fill="#10b981"/><circle cx="1060" cy="300" r="2.5" fill="#f87171"/>
+    <circle cx="1100" cy="200" r="2" fill="#475569"/><circle cx="1130" cy="240" r="2" fill="#10b981"/>
+    <circle cx="1045" cy="270" r="2" fill="#f87171"/><circle cx="1115" cy="210" r="2" fill="#10b981"/>
+  </g>
+
+  <!-- Title -->
+  <text x="600" y="75" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="800" fill="#f8fafc" text-anchor="middle" filter="url(#glow)">BitNet Explorer</text>
+
+  <!-- Subtitle -->
+  <text x="600" y="110" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#94a3b8" text-anchor="middle">What if every weight in your LLM was just -1, 0, or 1?</text>
+
+  <!-- Accent line -->
+  <rect x="430" y="125" width="340" height="2" rx="1" fill="url(#green)" opacity="0.6"/>
+
+  <!-- The three ternary values - large display -->
+  <g transform="translate(350, 155)">
+    <rect width="100" height="70" rx="10" fill="#1e293b" stroke="#f87171" stroke-width="2" opacity="0.8"/>
+    <text x="50" y="38" font-family="monospace" font-size="32" font-weight="700" fill="#f87171" text-anchor="middle">-1</text>
+    <text x="50" y="58" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">negate</text>
+  </g>
+
+  <g transform="translate(480, 155)">
+    <rect width="100" height="70" rx="10" fill="#1e293b" stroke="#475569" stroke-width="2" opacity="0.8"/>
+    <text x="50" y="38" font-family="monospace" font-size="32" font-weight="700" fill="#64748b" text-anchor="middle">0</text>
+    <text x="50" y="58" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">skip</text>
+  </g>
+
+  <g transform="translate(610, 155)">
+    <rect width="100" height="70" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="2" opacity="0.8"/>
+    <text x="50" y="38" font-family="monospace" font-size="32" font-weight="700" fill="#10b981" text-anchor="middle">+1</text>
+    <text x="50" y="58" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">copy</text>
+  </g>
+
+  <!-- Arrow from values to info -->
+  <text x="770" y="190" font-family="monospace" font-size="14" fill="#64748b">=</text>
+
+  <!-- 1.58 bits badge -->
+  <g transform="translate(800, 160)">
+    <rect width="130" height="55" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+    <text x="65" y="25" font-family="monospace" font-size="22" font-weight="700" fill="#10b981" text-anchor="middle">1.58</text>
+    <text x="65" y="43" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">bits per weight</text>
+  </g>
+
+  <!-- Bottom stats bar -->
+  <g transform="translate(140, 260)">
+    <rect width="170" height="55" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="85" y="22" font-family="monospace" font-size="18" font-weight="700" fill="#10b981" text-anchor="middle">2-6x</text>
+    <text x="85" y="42" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">faster inference</text>
+  </g>
+
+  <g transform="translate(340, 260)">
+    <rect width="170" height="55" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="85" y="22" font-family="monospace" font-size="18" font-weight="700" fill="#10b981" text-anchor="middle">10x</text>
+    <text x="85" y="42" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">smaller models</text>
+  </g>
+
+  <g transform="translate(540, 260)">
+    <rect width="170" height="55" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="85" y="22" font-family="monospace" font-size="18" font-weight="700" fill="#10b981" text-anchor="middle">82%</text>
+    <text x="85" y="42" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">less energy</text>
+  </g>
+
+  <g transform="translate(740, 260)">
+    <rect width="170" height="55" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="85" y="22" font-family="monospace" font-size="18" font-weight="700" fill="#10b981" text-anchor="middle">No GPU</text>
+    <text x="85" y="42" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">CPU inference</text>
+  </g>
+
+  <g transform="translate(940, 260)">
+    <rect width="170" height="55" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="85" y="22" font-family="monospace" font-size="18" font-weight="700" fill="#10b981" text-anchor="middle">OpenAI</text>
+    <text x="85" y="42" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">compatible API</text>
+  </g>
+
+  <!-- Feature pills at bottom -->
+  <g transform="translate(200, 340)">
+    <rect width="120" height="26" rx="13" fill="none" stroke="#10b981" stroke-width="1" opacity="0.4"/>
+    <text x="60" y="17" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Weight Viz</text>
+  </g>
+  <g transform="translate(340, 340)">
+    <rect width="120" height="26" rx="13" fill="none" stroke="#10b981" stroke-width="1" opacity="0.4"/>
+    <text x="60" y="17" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Benchmarks</text>
+  </g>
+  <g transform="translate(480, 340)">
+    <rect width="120" height="26" rx="13" fill="none" stroke="#10b981" stroke-width="1" opacity="0.4"/>
+    <text x="60" y="17" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Quant Explorer</text>
+  </g>
+  <g transform="translate(620, 340)">
+    <rect width="120" height="26" rx="13" fill="none" stroke="#10b981" stroke-width="1" opacity="0.4"/>
+    <text x="60" y="17" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">API Client</text>
+  </g>
+  <g transform="translate(760, 340)">
+    <rect width="120" height="26" rx="13" fill="none" stroke="#10b981" stroke-width="1" opacity="0.4"/>
+    <text x="60" y="17" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Setup Script</text>
+  </g>
+
+  <!-- Bottom credit -->
+  <text x="600" y="390" font-family="system-ui, sans-serif" font-size="11" fill="#475569" text-anchor="middle">Microsoft BitNet 1.58-bit Inference</text>
+</svg>
