@@ -2,7 +2,31 @@
 
 That is the premise behind BitNet. And it works better than you would expect.
 
+## We Have Been Here Before
+
+The AI industry has already solved the efficiency problem once.
+
+A decade ago, NLU and NLP models were small by design. Intent classifiers, named entity recognisers, and sentiment models ran on megabytes, not gigabytes. Frameworks like Rasa, LUIS, and Dialogflow trained models that shipped in tens of megabytes and ran on a single CPU core. Some ran directly on mobile phones. Many ran at the edge — in-store kiosks, IoT devices, embedded systems — with no cloud dependency and sub-millisecond latency.
+
+These models were efficient because they had to be. They solved narrow, well-defined language tasks. They did not need to understand everything. They just needed to understand enough.
+
+Then came the era of large language models, and efficiency stopped being a priority. The focus shifted to capability. Models got bigger. Hardware got more expensive. Deployment moved to GPU clusters in the cloud. The edge was abandoned.
+
+BitNet suggests that the pendulum is swinging back. Not by returning to narrow NLU models, but by making general-purpose language models efficient enough to run where those old models used to run — on CPUs, on laptops, at the edge.
+
+The question is whether we can have the capability of a large language model with the deployment profile of an NLU model. The answer, increasingly, is yes.
+
+## The Weight Problem
+
+To understand why BitNet matters, you need to understand what makes language models so large.
+
 Normal large language models store every weight as a 16-bit or 32-bit floating-point number. Billions of weights, each taking 2 or 4 bytes. A 100 billion parameter model in 16-bit precision needs roughly 200GB of memory. You need multiple GPUs just to load it.
+
+To put this in perspective: a single English character in ASCII takes 7 bits — roughly 1 byte. A 16-bit floating-point weight takes 2 bytes. That means every single weight in a language model uses more storage than two characters of text. A 100 billion parameter model stores the equivalent of 200 billion characters of raw data — roughly 40 million pages of text — just for the weight values alone. And that is before you account for activations, gradients, optimiser states, or the actual input data.
+
+The numbers are staggering because the precision is extravagant. Each weight is stored with enough precision to represent 65,536 distinct values (in 16-bit) or over 4 billion distinct values (in 32-bit). The question BitNet asks is: how many of those values does the model actually need?
+
+The answer is three.
 
 BitNet takes a different approach. Every weight is quantised to one of three values: **-1, 0, or 1**. Nothing else.
 
